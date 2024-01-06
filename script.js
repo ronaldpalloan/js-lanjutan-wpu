@@ -1,7 +1,11 @@
-console.log(nama);
-var nama = 'Ronald';
 
-hello();
+var nama = 'ronald';
+console.log(nama);
+
 function hello() {
-	alert('hallo');
+	console.log(`hallo ${nama}`);
+	console.log(arguments);
+	console.log(arguments[0]);
 }
+
+hello('doddy');
