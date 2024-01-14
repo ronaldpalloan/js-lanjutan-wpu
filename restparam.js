@@ -39,13 +39,13 @@
 
 
 // FILTERING
-function filterBy(type, ...values) {
-	// return values.filter(a => typeof(a) === type)
-	return values.filter(a => {
-		if(typeof(a) === type) {
-			return a;
-		}
-	})
-}
+// function filterBy(type, ...values) {
+// 	// return values.filter(a => typeof(a) === type)
+// 	return values.filter(a => {
+// 		if(typeof(a) === type) {
+// 			return a;
+// 		}
+// 	})
+// }
 
-console.log(filterBy('number', 5, 4, 'olivia', true, false, 10, 'alex'));
+// console.log(filterBy('number', 5, 4, 'olivia', true, false, 10, 'alex'));

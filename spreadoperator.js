@@ -51,11 +51,11 @@
 
 
 
-5. PRAKTEK HOVER PER HURUF
-const halo = document.querySelector('.sapa');
+// 5. PRAKTEK HOVER PER HURUF
+// const halo = document.querySelector('.sapa');
 
-const spanHuruf = [...halo.textContent].map(huruf => {
-	return `<span>${huruf}</span>`
-}).join('');
+// const spanHuruf = [...halo.textContent].map(huruf => {
+// 	return `<span>${huruf}</span>`
+// }).join('');
 
-halo.innerHTML = spanHuruf;
+// halo.innerHTML = spanHuruf;

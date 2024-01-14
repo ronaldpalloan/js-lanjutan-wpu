@@ -12,11 +12,11 @@
 // const str = coba`Halo ${nama}, yang umurnya ${umur} tahun, warna ${warna}`;
 
 // document.body.innerHTML = str;
-	// let hasil = '';
-	// strings.forEach((a, i) => {
-	// 	hasil += `${a}${values[i] || ''}`
-	// });
-	// return hasil;
+// 	let hasil = '';
+// 	strings.forEach((a, i) => {
+// 		hasil += `${a}${values[i] || ''}`
+// 	});
+// 	return hasil;
 
 // const nama = 'ronald';
 // const umur = 22;

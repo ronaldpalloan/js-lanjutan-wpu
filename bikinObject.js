@@ -106,29 +106,29 @@
 // let Ronald = new Mahasiswa('Ronald', 20);
 
 // 6. Class
-class Mahasiswa {
-	constructor(nama, energi) {
-		this.nama = nama;
-		this.energi = energi;
-	}
+// class Mahasiswa {
+// 	constructor(nama, energi) {
+// 		this.nama = nama;
+// 		this.energi = energi;
+// 	}
 
-	makan(porsi) {
-		this.energi += porsi;
-		return `kamu makan, energi: ${this.energi}`;
-	}
+// 	makan(porsi) {
+// 		this.energi += porsi;
+// 		return `kamu makan, energi: ${this.energi}`;
+// 	}
 
-	main(jam) {
-		this.energi -= jam;
-		return `kamu main, energi: ${this.energi}`;
-	}
+// 	main(jam) {
+// 		this.energi -= jam;
+// 		return `kamu main, energi: ${this.energi}`;
+// 	}
 
-	tidur(jam) {
-		this.energi += jam * 2;
-		return `kamu tidur, energi: ${this.energi}`;
-	}
-}
+// 	tidur(jam) {
+// 		this.energi += jam * 2;
+// 		return `kamu tidur, energi: ${this.energi}`;
+// 	}
+// }
 
-let Ronald = new Mahasiswa('Ronald', 20);
+// let Ronald = new Mahasiswa('Ronald', 20);
 
 
 

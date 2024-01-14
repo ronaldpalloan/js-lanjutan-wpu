@@ -52,13 +52,13 @@
 // console.log(jumlah(1,2,3,4,5));
 
 // 6. FOR ...IN
-const orang = {
-	nama: 'ronald',
-	umur: 22,
-	kelas: 'ipa'
-}
+// const orang = {
+// 	nama: 'ronald',
+// 	umur: 22,
+// 	kelas: 'ipa'
+// }
 
-for (let props in orang) {
-	console.log(props);
-	console.log(orang[props]);
-} 
+// for (let props in orang) {
+// 	console.log(props);
+// 	console.log(orang[props]);
+// } 

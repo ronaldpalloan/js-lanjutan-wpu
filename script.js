@@ -1,8 +1,23 @@
-function operasiMat(a, b, operasi) {
-	return operasi(a,b);
+// 1. CALLBACK
+// 
+// function addElement() {
+// 	const createJudul = document.createElement('h1');
+// 	createJudul.textContent = 'RONALD';
+
+// 	document.body.appendChild(createJudul);
+// }
+
+// setTimeout(addElement, 5000);
+// 
+// function addElement() {
+// 	const header = document.getElementById('header');
+// 	header.textContent = new Date().toString();
+// }
+
+// setInterval(addElement, 1000);
+
+function Mahasiswa() {
+	this.nama = 'ronald';
 }
 
-function tambah(x, y) {
-	return x + y;
-}
-
+const mahasiswa = new Mahasiswa();
