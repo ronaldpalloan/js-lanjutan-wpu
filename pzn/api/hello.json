@@ -1,3 +1,5 @@
 {
-	"response" : "hallo ronald"
+	"nama" : "ronald",
+	"umur" : 22,
+	"email" : "about@gmail.com"
 }

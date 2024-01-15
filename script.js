@@ -1,23 +1,30 @@
-// 1. CALLBACK
-// 
-// function addElement() {
-// 	const createJudul = document.createElement('h1');
-// 	createJudul.textContent = 'RONALD';
+// BUAT AJAX
+// const ajax = new XMLHttpRequest();
+// ajax.open('GET', 'pzn/api/hello.json');
 
-// 	document.body.appendChild(createJudul);
-// }
-
-// setTimeout(addElement, 5000);
-// 
-// function addElement() {
+// // CALLBACK UTK MENERIMA RESPONS DARI SERVER
+// ajax.addEventListener('load', () => {
+// 	const response = ajax.responseText;
+// 	console.log(response);
 // 	const header = document.getElementById('header');
-// 	header.textContent = new Date().toString();
-// }
+// 	header.textContent = `Halo ${response.nama} yang umurnya ${response.umur} tahun`;
+// })
 
-// setInterval(addElement, 1000);
+// // KIRIM AJAX KE SERVER
+// ajax.send();
 
-function Mahasiswa() {
-	this.nama = 'ronald';
-}
+console.log('mulai');
 
-const mahasiswa = new Mahasiswa();
+$.ajax({
+	url: 'pzn/api/hello.json',
+	success: mhs => {
+		for (let props in mhs) {
+			console.log(mhs[props]);
+		}
+	},
+	error: e => {
+		console.log(e.responseText);
+	}
+})
+
+console.log('selesai');

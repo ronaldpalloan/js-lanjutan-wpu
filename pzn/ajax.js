@@ -4,64 +4,64 @@ ajax.open('GET', 'api/hello.json');
 
 // CALLBACK UTK MENERIMA RESPONS DARI SERVER
 ajax.addEventListener('load', () => {
-	const response = JSON.parse(ajax.responseText);
+	const response = JSON.parse(ajax.response);
 	console.log(response);
 	const header = document.getElementById('header');
 	header.textContent = `Halo ${response.nama} yang umurnya ${response.umur} tahun`;
 })
 
-// KIRIM AJAX KE SERVER
-ajax.send();
+// // KIRIM AJAX KE SERVER
+// ajax.send();
 
 
-AJAX STATUS
+// AJAX STATUS
 
-const ajax = new XMLHttpRequest();
-// NGECEK STATE AJAX
-ajax.addEventListener('readystatechange', function() {
-	console.log(ajax.readyState);
-})
+// const ajax = new XMLHttpRequest();
+// // NGECEK STATE AJAX
+// ajax.addEventListener('readystatechange', function() {
+// 	console.log(ajax.readyState);
+// })
 
-ajax.open('GET', 'api/hello.json');
+// ajax.open('GET', 'api/hello.json');
 
-ajax.addEventListener('load', () => {
-	function tampilkan(x) {
-		const header = document.getElementById('header');
-		header.textContent = x.response;
-	}
+// ajax.addEventListener('load', () => {
+// 	function tampilkan(x) {
+// 		const header = document.getElementById('header');
+// 		header.textContent = x.response;
+// 	}
 
-	if (ajax.status === 200) {
-		const response = JSON.parse(ajax.responseText);
-		tampilkan(response);
-	} else {
-		tampilkan({response: `tidak bisa, error dengan kode ${ajax.status}`});
-	}
-})
+// 	if (ajax.status === 200) {
+// 		const response = JSON.parse(ajax.responseText);
+// 		tampilkan(response);
+// 	} else {
+// 		tampilkan({response: `tidak bisa, error dengan kode ${ajax.status}`});
+// 	}
+// })
 
-ajax.send();
-
-
+// ajax.send();
 
 
 
-KIRIM DATA AJAX KE SERVER
-function doLogin() {
-	const ajax = new XMLHttpRequest();
-	ajax.open('POST', 'https://eoy6gjmjg3h456f.m.pipedream.net/');
 
-	ajax.addEventListener('load', () => {
-		const response = document.getElementById('footer');
-		response.textContent = ajax.responseText;
-	})
 
-	ajax.setRequestHeader('Content-Type', 'application/json');
+// KIRIM DATA AJAX KE SERVER
+// function doLogin() {
+// 	const ajax = new XMLHttpRequest();
+// 	ajax.open('POST', 'https://eoy6gjmjg3h456f.m.pipedream.net/');
 
-	const json = {
-		nama: document.getElementById('nama').value,
-		password: document.getElementById('password').value
-	}
+// 	ajax.addEventListener('load', () => {
+// 		const response = document.getElementById('footer');
+// 		response.textContent = ajax.responseText;
+// 	})
 
-	ajax.send(JSON.stringify(json));
-}
+// 	ajax.setRequestHeader('Content-Type', 'application/json');
 
-document.getElementById('login').addEventListener('click', doLogin);
+// 	const json = {
+// 		nama: document.getElementById('nama').value,
+// 		password: document.getElementById('password').value
+// 	}
+
+// 	ajax.send(JSON.stringify(json));
+// }
+
+// document.getElementById('login').addEventListener('click', doLogin);
