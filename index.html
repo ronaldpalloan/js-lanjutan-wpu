@@ -19,8 +19,19 @@
     		</div>
     	</div>
 
-    	<!-- <div class="row">
-    		<div class="col-md-4 my-3">
+    	<div class="row">
+    		<div class="col-md-8">
+    			<div class="input-group mb-3">
+					  <input type="text" class="form-control input-keyword" placeholder="Search Movies...">
+					  <div class="input-group-append">
+					    <button class="btn btn-primary search-button" type="button" id="button-addon2">Search</button>
+					  </div>
+					</div>
+    		</div>
+    	</div>		
+
+    	<div class="row listMovies" id="listMovies">
+    		<!-- <div class="col-md-4 my-3">
     			<div class="card">
 					  <img src="" class="card-img-top">
 					  <div class="card-body">
@@ -29,11 +40,39 @@
 					    <a href="#" class="btn btn-primary">Show Details</a>
 					  </div>
 					</div>
-    		</div>
-    	</div>	 -->
+    		</div> -->
+    	</div>	
 
     </div>
 
+
+
+<!-- Awal modal -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailMovieModal" tabindex="-1" role="dialog" aria-labelledby="detailMovieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailMovieModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Akhir Modal -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
