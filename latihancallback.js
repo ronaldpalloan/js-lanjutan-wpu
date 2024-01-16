@@ -1,39 +1,69 @@
-$('.search-button').on('click', function() {
-	$.ajax({
-		url: 'http://www.omdbapi.com/?apikey=e9a97dc6&s=' + $('.input-keyword').val(),
-		success: hasil => {
-			console.log(hasil);
-			const movies = hasil.Search;
-			console.log(movies); 
-			let daftar = '';
+// $('.search-button').on('click', function() {
+// 	$.ajax({
+// 		url: 'http://www.omdbapi.com/?apikey=e9a97dc6&s=' + $('.input-keyword').val(),
+// 		success: hasil => {
+			// console.log(hasil);
+			// const movies = hasil.Search;
+			// console.log(movies); 
+			// let daftar = '';
 
-			movies.forEach(a => {
-				daftar += daftarMovie(a);
-			})
+			// movies.forEach(a => {
+			// 	daftar += daftarMovie(a);
+			// })
 	    
-	    $('.listMovies').html(daftar);
+	  //   $('.listMovies').html(daftar);
 
-	    $('.detail-button').on('click', function() {
-	    	$.ajax({
-	    		url: 'http://www.omdbapi.com/?apikey=e9a97dc6&i=' + $(this).data('imdb'),
-	    		success: a => {
-	    			const movieDetail = daftarDetail(a);
+	  //   $('.detail-button').on('click', function() {
+	  //   	$.ajax({
+	  //   		url: 'http://www.omdbapi.com/?apikey=e9a97dc6&i=' + $(this).data('imdb'),
+	  //   		success: a => {
+	  //   			const movieDetail = daftarDetail(a);
 
-	      		$('.modal-body').html(movieDetail);
-	    		},
-	    		error: e => {
-						console.log(e.responseText);
-					}
-	    	})
-	    })
-		},
-		error: e => {
-			console.log(e.responseText);
-		}
-	})	
+	  //     		$('.modal-body').html(movieDetail);
+// 	    		},
+// 	    		error: e => {
+// 						console.log(e.responseText);
+// 					}
+// 	    	})
+// 	    })
+// 		},
+// 		error: e => {
+// 			console.log(e.responseText);
+// 		}
+// 	})	
+// })
+
+
+
+// FETCH
+const searchButton = document.querySelector('.search-button');
+
+searchButton.addEventListener('click', function() {
+	const inputJudul = document.querySelector('.input-keyword');
+	fetch('http://www.omdbapi.com/?apikey=e9a97dc6&s=' + inputJudul.value)
+		.then(response => response.json())
+		.then(response => {
+			const movies = response.Search;
+			let daftar = '';
+			movies.forEach(a => daftar += daftarMovie(a));
+			document.querySelector('.listMovies').innerHTML = daftar;
+
+			const detailButton = document.querySelectorAll('.detail-button');
+			detailButton.forEach(btn => {
+				btn.addEventListener('click', function() {
+					console.log(this.dataset.imdb);
+					fetch(`http://www.omdbapi.com/?apikey=e9a97dc6&i=${this.dataset.imdb}`)
+						.then(response => response.json())
+						.then(response => {
+							const movieDetail = daftarDetail(response);
+							document.querySelector('.modal-body').innerHTML = movieDetail;
+						});
+				})
+			})
+			
+		});
+
 })
-
-
 
 
 function daftarMovie(a) {
