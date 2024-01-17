@@ -36,35 +36,102 @@
 
 
 // FETCH
+// const searchButton = document.querySelector('.search-button');
+
+// searchButton.addEventListener('click', function() {
+// 	const inputJudul = document.querySelector('.input-keyword');
+// 	fetch('http://www.omdbapi.com/?apikey=e9a97dc6&s=' + inputJudul.value)
+// 		.then(response => response.json())
+// 		.then(response => {
+// 			const movies = response.Search;
+// 			let daftar = '';
+// 			movies.forEach(a => daftar += daftarMovie(a));
+// 			document.querySelector('.listMovies').innerHTML = daftar;
+
+// 			const detailButton = document.querySelectorAll('.detail-button');
+// 			detailButton.forEach(btn => {
+// 				btn.addEventListener('click', function() {
+// 					console.log(this.dataset.imdb);
+// 					fetch(`http://www.omdbapi.com/?apikey=e9a97dc6&i=${this.dataset.imdb}`)
+// 						.then(response => response.json())
+// 						.then(response => {
+// 							const movieDetail = daftarDetail(response);
+// 							document.querySelector('.modal-body').innerHTML = movieDetail;
+// 						});
+// 				})
+// 			})
+			
+// 		});
+
+// })
+
+
+// FETCH REFACTORING, ASYNC AWAIT
 const searchButton = document.querySelector('.search-button');
 
-searchButton.addEventListener('click', function() {
-	const inputJudul = document.querySelector('.input-keyword');
-	fetch('http://www.omdbapi.com/?apikey=e9a97dc6&s=' + inputJudul.value)
-		.then(response => response.json())
+searchButton.addEventListener('click', async function() {
+	try {
+		const inputJudul = document.querySelector('.input-keyword');
+		const movies = await getMovies(inputJudul.value);
+		updateList(movies);
+	} catch(error) {
+		alert(error);	
+	}
+});
+
+function getMovies(movies) {
+	return fetch('http://www.omdbapi.com/?apikey=e9a97dc6&s=' + movies)
 		.then(response => {
-			const movies = response.Search;
-			let daftar = '';
-			movies.forEach(a => daftar += daftarMovie(a));
-			document.querySelector('.listMovies').innerHTML = daftar;
+			// MENANGANI LINK YG ERROR
+			if (response.ok === false) {
+				throw new Error(response.status);
+			} 
+			return response.json();
+		})
+		.then(response => {
+			// MENANGANI JUDUL
+			if (response.Response === 'False') {
+				throw new Error(response.Error);
+			}
+			return response.Search;
+		})
+}
 
-			const detailButton = document.querySelectorAll('.detail-button');
-			detailButton.forEach(btn => {
-				btn.addEventListener('click', function() {
-					console.log(this.dataset.imdb);
-					fetch(`http://www.omdbapi.com/?apikey=e9a97dc6&i=${this.dataset.imdb}`)
-						.then(response => response.json())
-						.then(response => {
-							const movieDetail = daftarDetail(response);
-							document.querySelector('.modal-body').innerHTML = movieDetail;
-						});
-				})
-			})
-			
-		});
+function updateList(movies) {
+	let daftar = '';
+	movies.forEach(a => daftar += daftarMovie(a));
+	document.querySelector('.listMovies').innerHTML = daftar;
+}
 
+// DETAIL MOVIE KETIKA DIKLIK
+document.addEventListener('click', async function(e) {
+	if (e.target.classList.contains('detail-button')) {
+		try {
+			const imdb = e.target.dataset.imdb;
+			const detailMovie = await getDetail(imdb);
+			updateDetail(detailMovie);
+		} catch(error) {
+			alert(error);
+		}
+	}
 })
 
+function getDetail(imdb) {
+	return fetch(`http://www.omdbapi.com/?apikey=e9a97dc6&i=${imdb}`)
+			.then(response => {
+				if (response.ok === false) {
+					throw new Error(response.status);
+				} else {
+					return response.json();
+				}
+			})
+			.then(response => response);
+}
+
+function updateDetail(response) {
+	const movieDetail = daftarDetail(response);
+	document.querySelector('.modal-body').innerHTML = movieDetail;
+}
 
 function daftarMovie(a) {
 	return (
